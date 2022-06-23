@@ -1,7 +1,12 @@
-function tabs(params) {
-  let tabs = document.querySelectorAll(".tabheader__item"),
-    tabsContent = document.querySelectorAll(".tabcontent"),
-    tabsParent = document.querySelector(".tabheader__items");
+function tabs(
+  tabsSelector,
+  tabsContentSelector,
+  tabsParentSelector,
+  activeClass
+) {
+  let tabs = document.querySelectorAll(tabsSelector),
+    tabsContent = document.querySelectorAll(tabsContentSelector),
+    tabsParent = document.querySelector(tabsParentSelector);
   //назначили переменные
 
   function hideTabContent() {
@@ -12,7 +17,7 @@ function tabs(params) {
     });
 
     tabs.forEach((item) => {
-      item.classList.remove("tabheader__item_active"); //убираем подчеркивание
+      item.classList.remove(activeClass); //убираем подчеркивание
     });
   }
   function showTabContent(i = 0) {
@@ -26,7 +31,7 @@ function tabs(params) {
   tabsParent.addEventListener("click", (event) => {
     let target = event.target;
 
-    if (target && target.classList.contains("tabheader__item")) {
+    if (target && target.classList.contains(tabsSelector.slice(1))) {
       tabs.forEach((item, i) => {
         if (target == item) {
           hideTabContent();
@@ -37,4 +42,4 @@ function tabs(params) {
   });
 }
 
-module.exports = tabs;
+export default tabs;

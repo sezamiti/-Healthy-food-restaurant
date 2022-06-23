@@ -168,4 +168,4 @@ function calc(params) {
   //my test
 }
 
-module.exports = calc;
+export default calc;
